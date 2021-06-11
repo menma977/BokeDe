@@ -21,7 +21,7 @@ class RegisterActivity : AppCompatActivity() {
 
     usernameReg = findViewById(R.id.editTextTextUsernameReg)
     passwordReg = findViewById(R.id.editTextTextPasswordReg)
-    signUp = findViewById(R.id.buttonSiegeUp)
+    signUp = findViewById(R.id.buttonSignUp)
 
     signUp.setOnClickListener {
       register(usernameReg, passwordReg)

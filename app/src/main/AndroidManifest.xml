@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="com.bokede">
 
   <uses-permission android:name="android.permission.INTERNET"/>
@@ -10,7 +11,15 @@
       android:label="@string/app_name"
       android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
-      android:theme="@style/Theme.BokeDe">
+      android:theme="@style/Theme.BokeDe"
+      tools:ignore="AllowBackup">
+    <activity
+        android:name=".view.WithdrawActivity"
+        android:theme="@style/Theme.BokeDe.NoActionBar">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".view.NavigationActivity"/>
+    </activity>
     <activity
         android:name=".view.NavigationActivity"
         android:theme="@style/Theme.BokeDe.NoActionBar">
@@ -33,11 +42,6 @@
         <action android:name="android.intent.action.MAIN"/>
 
         <category android:name="android.intent.category.LAUNCHER"/>
-
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-4655087742659933~6914458522" />
-
       </intent-filter>
     </activity>
 
@@ -45,6 +49,9 @@
         android:name=".service.Balance"
         android:enabled="true"/>
 
+    <meta-data
+        android:name="com.google.android.gms.ads.APPLICATION_ID"
+        android:value="ca-app-pub-4655087742659933~6914458522"/>
   </application>
 
 </manifest>

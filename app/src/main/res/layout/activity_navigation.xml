@@ -42,9 +42,9 @@
       android:layout_height="wrap_content"
       android:contentDescription="@string/app_name"
       app:layout_anchor="@id/bottomAppBar"
-      app:backgroundTint="?attr/colorPrimary"
+      app:backgroundTint="?attr/colorSecondary"
       android:src="@drawable/ic_baseline_sports"
-      app:tint="?android:textColor"
+      app:tint="?android:colorSecondary"
       app:fabSize="auto"
       app:fabCustomSize="65dp"/>
 

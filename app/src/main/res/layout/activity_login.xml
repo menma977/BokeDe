@@ -64,7 +64,7 @@
         android:text="@string/sign_in"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:id="@+id/buttonSiegeIn"
+        android:id="@+id/buttonSignIn"
         android:background="@drawable/button_1"
         android:textColor="?android:textColor"/>
 
@@ -84,14 +84,14 @@
       android:layout_gravity="center"
       app:layout_constraintTop_toBottomOf="@id/cardLogin"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toStartOf="@id/buttonSiegeUp"
+      app:layout_constraintEnd_toStartOf="@id/buttonSignUp"
       app:layout_constraintBottom_toBottomOf="parent"/>
 
   <androidx.appcompat.widget.AppCompatButton
       android:text="@string/sign_up"
       android:layout_width="150dp"
       android:layout_height="40dp"
-      android:id="@+id/buttonSiegeUp"
+      android:id="@+id/buttonSignUp"
       android:background="@drawable/button_1"
       android:textColor="?android:textColor"
       android:layout_gravity="center"
@@ -99,5 +99,18 @@
       app:layout_constraintStart_toEndOf="@id/buttonRegisterDice"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintBottom_toBottomOf="parent"/>
+
+  <com.google.android.gms.ads.AdView
+      xmlns:ads="http://schemas.android.com/apk/res-auto"
+      android:id="@+id/adViewBanner"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:layout_alignParentBottom="true"
+      ads:adSize="BANNER"
+      ads:adUnitId="ca-app-pub-4655087742659933/6523576283"
+      ads:layout_constraintStart_toStartOf="parent"
+      ads:layout_constraintEnd_toEndOf="parent"
+      ads:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

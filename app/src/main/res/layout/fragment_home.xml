@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textColor="?attr/colorSecondaryVariant"/>
+            android:textColor="?attr/colorSecondary"/>
 
         <TextView
             android:id="@+id/textViewProfitAmount"
@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textColor="?attr/colorSecondaryVariant"/>
+            android:textColor="?attr/colorSecondary"/>
 
       </LinearLayout>
 
@@ -79,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textColor="?attr/colorSecondaryVariant"/>
+            android:textColor="?attr/colorSecondary"/>
 
         <TextView
             android:id="@+id/textViewWinChanceAmount"
@@ -87,32 +87,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textColor="?attr/colorSecondaryVariant"/>
+            android:textColor="?attr/colorSecondary"/>
 
       </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <Space
         android:layout_width="match_parent"
-        android:layout_height="10dp"/>
+        android:layout_height="5dp"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="10dp"
         android:layout_marginTop="15dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="10dp"
-        android:padding="10dp"
-        android:background="@drawable/card_1">
+        android:padding="10dp">
 
       <TextView
           android:id="@+id/textViewBalance"
           android:text="@string/balance"
-          android:textColor="?attr/colorSecondaryVariant"
+          android:textColor="?attr/colorSecondary"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           app:layout_constraintTop_toTopOf="parent"
@@ -135,7 +132,7 @@
       <TextView
           android:text="@string/example_balance"
           android:id="@+id/textViewBalanceAmount"
-          android:textColor="?attr/colorSecondaryVariant"
+          android:textColor="?attr/colorSecondary"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:gravity="center"
@@ -148,46 +145,63 @@
       <androidx.appcompat.widget.AppCompatButton
           android:text="@string/deposit"
           android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:id="@+id/buttonDepositBot"
+          android:layout_height="45dp"
+          android:id="@+id/buttonDeposit"
           android:background="@drawable/button_1"
           android:scaleType="fitCenter"
           android:contentDescription="@string/icon"
-          android:padding="5dp"
+          android:padding="10dp"
           app:layout_constraintTop_toBottomOf="@id/textViewBalanceAmount"
           app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintEnd_toStartOf="@id/buttonWithdrawBot"
+          app:layout_constraintEnd_toStartOf="@id/buttonWithdraw"
           app:layout_constraintBottom_toBottomOf="parent"
-          android:layout_marginTop="8dp"
+          android:layout_marginTop="10dp"
           android:layout_marginStart="8dp"
           android:layout_marginEnd="8dp"
+          android:layout_marginBottom="10dp"
           android:drawableStart="@drawable/ic_baseline_account_balance_wallet"
           android:drawablePadding="10dp"
-          android:drawableTint="?attr/colorSecondaryVariant"
-          android:textColor="?attr/colorSecondaryVariant"/>
+          android:drawableTint="?attr/colorSecondary"
+          android:textColor="?attr/colorSecondary"/>
 
       <androidx.appcompat.widget.AppCompatButton
           android:text="@string/withdraw"
           android:layout_width="0dp"
-          android:layout_height="wrap_content"
-          android:id="@+id/buttonWithdrawBot"
+          android:layout_height="45dp"
+          android:id="@+id/buttonWithdraw"
           android:background="@drawable/button_1"
           android:scaleType="fitCenter"
           android:contentDescription="@string/icon"
-          android:padding="5dp"
+          android:padding="10dp"
           app:layout_constraintTop_toBottomOf="@id/textViewBalanceAmount"
-          app:layout_constraintStart_toEndOf="@id/buttonDepositBot"
+          app:layout_constraintStart_toEndOf="@id/buttonDeposit"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintBottom_toBottomOf="parent"
-          android:layout_marginTop="8dp"
+          android:layout_marginTop="10dp"
           android:layout_marginStart="8dp"
           android:layout_marginEnd="8dp"
+          android:layout_marginBottom="10dp"
           android:drawableStart="@drawable/ic_baseline_account_balance_wallet"
           android:drawablePadding="10dp"
-          android:drawableTint="?attr/colorSecondaryVariant"
-          android:textColor="?attr/colorSecondaryVariant"/>
+          android:drawableTint="?attr/colorSecondary"
+          android:textColor="?attr/colorSecondary"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adViewBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-4655087742659933/6523576283"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintBottom_toBottomOf="parent"/>
 
     <Space
         android:layout_width="match_parent"

@@ -25,8 +25,10 @@ class Loading(private val activity: Activity) {
     dialog.dismiss()
   }
 
-  fun closeParent(intent: Intent) {
-    activity.startActivity(intent)
+  fun closeParent(intent: Intent? = null) {
+    if (intent != null) {
+      activity.startActivity(intent)
+    }
     activity.finish()
     dialog.dismiss()
   }

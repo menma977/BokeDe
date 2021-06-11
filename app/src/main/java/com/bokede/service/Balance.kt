@@ -31,15 +31,13 @@ class Balance : Service() {
 
     user = User(this)
 
-    CoroutineScope(Dispatchers.IO + job).launch {
-      runService()
-    }
+    runService()
   }
 
   override fun onCreate() {
     super.onCreate()
-    onHandleIntent()
     service = true
+    onHandleIntent()
   }
 
   override fun onDestroy() {
@@ -50,41 +48,44 @@ class Balance : Service() {
 
   private fun runService() {
     val privateIntent = Intent()
-    Log.i("status balance service", service.toString())
-    if (service) {
-      try {
-        BalanceController(this).invoke(user.getString("cookie"), "doge").cll({
-          val response = HandleResult(it).result()
-          if (response.getInt("code") < 400) {
-            Log.i("response", response.getJSONObject("data").toString())
-            privateIntent.putExtra("balance", response.getJSONObject("data").getString("Balance"))
-            privateIntent.putExtra("payIn", response.getJSONObject("data").getString("TotalPayIn"))
-            privateIntent.putExtra("payOut", response.getJSONObject("data").getString("TotalPayOut"))
-            privateIntent.putExtra("bet", response.getJSONObject("data").getString("TotalBets"))
-            privateIntent.putExtra("win", response.getJSONObject("data").getString("TotalWins"))
-            privateIntent.action = "doge.balance"
-            LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(privateIntent)
-            GlobalScope.launch {
-              delay(10000)
-              runService()
-            }
-          } else {
-            Log.e("error Service Balance", response.getString("data"))
-            GlobalScope.launch {
-              delay(60000)
-              runService()
+    var time = System.currentTimeMillis()
+    var dynamicTime = 1000
+    CoroutineScope(Dispatchers.IO + job).launch {
+      while (isActive) {
+        val delta = System.currentTimeMillis() - time
+        if (service) {
+          if (delta >= dynamicTime) {
+            time = System.currentTimeMillis()
+            try {
+              BalanceController(applicationContext).invoke(user.getString("cookie"), "doge").cll({
+                val response = HandleResult(it).result()
+                if (response.getInt("code") < 400) {
+                  privateIntent.putExtra("balance", response.getJSONObject("data").getString("Balance"))
+                  privateIntent.putExtra("payIn", response.getJSONObject("data").getString("TotalPayIn"))
+                  privateIntent.putExtra("payOut", response.getJSONObject("data").getString("TotalPayOut"))
+                  privateIntent.putExtra("bet", response.getJSONObject("data").getString("TotalBets"))
+                  privateIntent.putExtra("win", response.getJSONObject("data").getString("TotalWins"))
+                  privateIntent.action = "doge.balance"
+                  LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(privateIntent)
+                  dynamicTime = 10000
+                } else {
+                  Log.e("error Service Balance", response.getString("data"))
+                  dynamicTime = 60000
+                }
+              }, {
+                val response = HandleError(it).result()
+                Log.e("error Service Balance", response.getString("message"))
+                dynamicTime = 60000
+              })
+            } catch (e: Exception) {
+              Log.e("error Service Balance", e.message.toString())
+              dynamicTime = 60000
             }
           }
-        }, {
-          val response = HandleError(it).result()
-          Log.e("error Service Balance", response.getString("data"))
-          GlobalScope.launch {
-            delay(60000)
-            runService()
-          }
-        })
-      } catch (e: Exception) {
-        Log.e("error Service Balance", e.message.toString())
+        } else {
+          stopSelf()
+          job.cancel()
+        }
       }
     }
   }

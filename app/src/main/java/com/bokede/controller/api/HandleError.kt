@@ -50,7 +50,7 @@ class HandleError(private val error: VolleyError) {
         }
       }
     } catch (e: Exception) {
-      return JSONObject().put("message", e.localizedMessage)
+      return JSONObject().put("message", "something when wrong")
     }
   }
 }

@@ -14,8 +14,8 @@
     <!-- Customize your theme here. -->
     <item name="android:windowBackground">@color/background.dark</item>
     <item name="android:editTextBackground">@drawable/edit_text</item>
-    <item name="android:editTextColor">@color/text</item>
-    <item name="android:textColor">@color/text</item>
+    <item name="android:editTextColor">@color/primary</item>
+    <item name="android:textColor">@color/primary</item>
     <item name="android:textColorHint">@color/text.hint</item>
     <item name="android:drawableTint">@color/text.hint</item>
   </style>
@@ -34,8 +34,8 @@
     <!-- Customize your theme here. -->
     <item name="android:windowBackground">@color/background.dark</item>
     <item name="android:editTextBackground">@drawable/edit_text</item>
-    <item name="android:editTextColor">@color/text</item>
-    <item name="android:textColor">@color/text</item>
+    <item name="android:editTextColor">@color/primary</item>
+    <item name="android:textColor">@color/primary</item>
     <item name="android:textColorHint">@color/text.hint</item>
     <item name="android:drawableTint">@color/text.hint</item>
   </style>

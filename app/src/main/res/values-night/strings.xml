@@ -13,4 +13,8 @@
   <string name="win_chance">0</string>
   <string name="wins_chance_text">Wins chance</string>
   <string name="total_profit">Total Profit</string>
+  <string name="sign_out">Sign Out</string>
+  <string name="wallet">Wallet</string>
+  <string name="amount">Amount</string>
+  <string name="transfer">Transfer</string>
 </resources>

@@ -36,7 +36,7 @@
       <TextView
           android:id="@+id/textViewBalance"
           android:text="@string/balance"
-          android:textColor="?attr/colorSecondaryVariant"
+          android:textColor="?attr/colorSecondary"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           app:layout_constraintTop_toTopOf="parent"
@@ -59,7 +59,7 @@
       <TextView
           android:text="@string/example_balance"
           android:id="@+id/textViewBalanceAmount"
-          android:textColor="?attr/colorSecondaryVariant"
+          android:textColor="?attr/colorSecondary"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:gravity="center"
@@ -73,17 +73,32 @@
 
     <Space
         android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adViewBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-4655087742659933/6523576283"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Space
+        android:layout_width="match_parent"
         android:layout_height="30dp"/>
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:text="Logout"
+        android:text="@string/sign_out"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:padding="10dp"
-        android:id="@+id/buttonSiegeIn"
+        android:id="@+id/buttonSignOut"
         android:background="@drawable/button_1"
         android:textColor="?android:textColor"
         android:drawableStart="@drawable/ic_baseline_settings_power"/>
