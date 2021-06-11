@@ -4,9 +4,9 @@
   <string name="password">Password</string>
   <string name="sign_in">Sign in</string>
   <string name="register_in_app">Register In App</string>
-  <string name="register_in_dice">Register In Dice</string>
+  <string name="register_in_dice">Register In DOGE</string>
   <string name="register">Register</string>
-  <string name="registering_here_means_you_also_register_an_account_at_999dice_you_can_also_log_in_to_999dice_with_the_same_account">registering here means you also register an account at 999dice, you can also log in to 999dice with the same account</string>
+  <string name="registering_here_means_you_also_register_an_account_at_999dice_you_can_also_log_in_to_999dice_with_the_same_account">registering here means you also register an account at 999DOGE, you can also log in to 999DOGE with the same account</string>
   <string name="sign_up">Sign Up</string>
   <string name="example_balance">0 DOGE</string>
   <string name="icon">Icon</string>
