@@ -14,6 +14,13 @@
       android:theme="@style/Theme.BokeDe"
       tools:ignore="AllowBackup">
     <activity
+        android:name=".view.place.bet.BetActivity"
+        android:theme="@style/Theme.BokeDe.NoActionBar">
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".view.NavigationActivity"/>
+    </activity>
+    <activity
         android:name=".view.WithdrawActivity"
         android:theme="@style/Theme.BokeDe.NoActionBar">
       <meta-data
@@ -33,8 +40,7 @@
     </activity>
     <activity
         android:name=".view.LoginActivity"
-        android:theme="@style/Theme.BokeDe.NoActionBar">
-    </activity>
+        android:theme="@style/Theme.BokeDe.NoActionBar"/>
     <activity
         android:name=".MainActivity"
         android:theme="@style/Theme.BokeDe.NoActionBar">

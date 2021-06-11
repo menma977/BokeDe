@@ -20,4 +20,12 @@
   <string name="wallet">Wallet</string>
   <string name="amount">Amount</string>
   <string name="transfer">Transfer</string>
+  <string name="spinner_mode">Low/High</string>
+  <string name="chance">Chance</string>
+  <string name="start">Start</string>
+  <string name="one_shot">Step</string>
+  <string name="stop">Stop</string>
+  <string name="doge">DOGE</string>
+  <string name="result">Result</string>
+  <string name="action">Action</string>
 </resources>

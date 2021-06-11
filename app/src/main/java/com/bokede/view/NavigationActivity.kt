@@ -8,6 +8,7 @@ import com.bokede.R
 import com.bokede.service.Balance
 import com.bokede.view.fragment.HomeFragment
 import com.bokede.view.fragment.SettingFragment
+import com.bokede.view.place.bet.BetActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.*
@@ -26,6 +27,12 @@ class NavigationActivity : AppCompatActivity() {
     botFloatButton = findViewById(R.id.fabBot)
 
     config()
+
+    botFloatButton.setOnClickListener {
+      val move = Intent(this, BetActivity::class.java)
+      stopService()
+      startActivity(move)
+    }
   }
 
   override fun onBackPressed() {

@@ -16,14 +16,14 @@
   <color name="text.secondary">#757575</color>
   <color name="text.hint">#BDBDBD</color>
 
-  <color name="button.primary">#3379B7</color>
+  <color name="button.primary">#448AFF</color>
   <color name="button.primary.click">#1F486D</color>
-  <color name="button.success">#26B89A</color>
-  <color name="button.success.click">#177260</color>
+  <color name="button.success">#4CAF50</color>
+  <color name="button.success.click">#388E3C</color>
   <color name="button.info">#5ABEDD</color>
   <color name="button.info.click">#3B7C91</color>
   <color name="button.warning">#EEAC4E</color>
   <color name="button.warning.click">#976C2F</color>
-  <color name="button.danger">#D7524F</color>
+  <color name="button.danger">#F44336</color>
   <color name="button.danger.click">#83302E</color>
 </resources>

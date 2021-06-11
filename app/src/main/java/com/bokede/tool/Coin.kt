@@ -19,7 +19,7 @@ object Coin {
   }
 
   fun decimalToCoinView(value: BigDecimal): String {
-    return decimalFormat.format(value.multiply(bigDecimalFormat).setScale(8, BigDecimal.ROUND_HALF_DOWN)).replace(",", ".") + " DOGE"
+    return decimalFormat.format(value.multiply(bigDecimalFormat).setScale(8, BigDecimal.ROUND_HALF_DOWN)).replace(",", ".") + "DOGE"
   }
 
   fun percentToChance(value: BigDecimal): String {

@@ -7,7 +7,6 @@
           android:startColor="?attr/colorPrimary"
           android:endColor="?attr/colorOnPrimary"
           android:type="linear"/>
-      <corners android:radius="20dp"/>
     </shape>
   </item>
   <item android:state_pressed="true">
@@ -17,7 +16,6 @@
           android:startColor="?attr/colorPrimary"
           android:endColor="?attr/colorOnPrimary"
           android:type="linear"/>
-      <corners android:radius="20dp"/>
     </shape>
   </item>
   <item>
@@ -27,7 +25,6 @@
           android:endColor="?attr/colorPrimary"
           android:startColor="?attr/colorPrimaryVariant"
           android:type="linear"/>
-      <corners android:radius="20dp"/>
     </shape>
   </item>
 </selector>
