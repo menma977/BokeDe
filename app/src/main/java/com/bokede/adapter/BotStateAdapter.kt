@@ -33,7 +33,7 @@ class BotStateAdapter(private val context: Context) : RecyclerView.Adapter<BotSt
       holder.chance.setTextColor(ContextCompat.getColor(context, R.color.button_danger))
       holder.amount.text = myDataset[position].amount
       holder.amount.setTextColor(ContextCompat.getColor(context, R.color.button_danger))
-      holder.profit.text = "-${myDataset[position].profit}"
+      holder.profit.text = myDataset[position].profit
       holder.profit.setTextColor(ContextCompat.getColor(context, R.color.button_danger))
     } else if (myDataset[position].color == "in" && position != 0) {
       holder.action.text = myDataset[position].type

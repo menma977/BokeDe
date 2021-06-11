@@ -28,4 +28,7 @@
   <string name="doge">DOGE</string>
   <string name="result">Result</string>
   <string name="action">Action</string>
+  <string name="double_text">Double</string>
+  <string name="half_text">Half</string>
+  <string name="reset_text">Reset</string>
 </resources>

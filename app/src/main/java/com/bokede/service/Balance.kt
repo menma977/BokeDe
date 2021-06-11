@@ -67,7 +67,7 @@ class Balance : Service() {
                   privateIntent.putExtra("win", response.getJSONObject("data").getString("TotalWins"))
                   privateIntent.action = "doge.balance"
                   LocalBroadcastManager.getInstance(applicationContext).sendBroadcast(privateIntent)
-                  dynamicTime = 10000
+                  dynamicTime = 8000
                 } else {
                   Log.e("error Service Balance", response.getString("data"))
                   dynamicTime = 60000

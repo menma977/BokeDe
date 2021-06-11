@@ -114,7 +114,10 @@ class HomeFragment : Fragment() {
         val profit = payOut + payIn
         val bet = intent.getStringExtra("bet").toString().toDouble()
         val win = intent.getStringExtra("win").toString().toDouble()
-        val chance = (win / bet) * 100
+        var chance = 50.0
+        if (bet > 0 && win > 0) {
+          chance = (win / bet) * 100
+        }
         profitAmount.text = Coin.decimalToCoinView(profit)
         winChanceAmount.text = Coin.chanceToPercent(chance.toBigDecimal()) + "%"
         balanceAmount.text = Coin.decimalToCoinView(intent.getStringExtra("balance").toString().toBigDecimal())
