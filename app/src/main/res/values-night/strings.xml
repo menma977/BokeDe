@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="username">Username</string>
+  <string name="password">Password</string>
+  <string name="sign_in">Sign in</string>
+  <string name="register">Register</string>
+  <string name="sign_up">Sign Up</string>
+  <string name="example_balance">0 DOGE</string>
+  <string name="icon">Icon</string>
+  <string name="deposit">Deposit</string>
+  <string name="withdraw">Withdraw</string>
+  <string name="balance">Balance</string>
+  <string name="win_chance">0</string>
+  <string name="wins_chance_text">Wins chance</string>
+  <string name="total_profit">Total Profit</string>
+</resources>

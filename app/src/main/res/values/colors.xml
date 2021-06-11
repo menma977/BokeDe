@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="primary.light">#e64a2c</color>
+  <color name="primary">#ac0700</color>
+  <color name="primary.dark">#760000</color>
+
+  <color name="secondary.light">#ffffff</color>
+  <color name="secondary">#f2f2f2</color>
+  <color name="secondary.dark">#bfbfbf</color>
+
+  <color name="background">#ac0700</color>
+  <color name="background.dark">#f2f2f2</color>
+
+  <color name="text">#FFFFFF</color>
+  <color name="text.primary">#212121</color>
+  <color name="text.secondary">#757575</color>
+  <color name="text.hint">#BDBDBD</color>
+
+  <color name="button.primary">#3379B7</color>
+  <color name="button.primary.click">#1F486D</color>
+  <color name="button.success">#26B89A</color>
+  <color name="button.success.click">#177260</color>
+  <color name="button.info">#5ABEDD</color>
+  <color name="button.info.click">#3B7C91</color>
+  <color name="button.warning">#EEAC4E</color>
+  <color name="button.warning.click">#976C2F</color>
+  <color name="button.danger">#D7524F</color>
+  <color name="button.danger.click">#83302E</color>
+</resources>

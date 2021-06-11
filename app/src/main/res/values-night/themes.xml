@@ -1,0 +1,42 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <!-- Base application theme. -->
+  <style name="Theme.BokeDe" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <!-- Primary brand color. -->
+    <item name="colorPrimary">@color/secondary</item>
+    <item name="colorPrimaryVariant">@color/secondary.dark</item>
+    <item name="colorOnPrimary">@color/secondary.light</item>
+    <!-- Secondary brand color. -->
+    <item name="colorSecondary">@color/primary</item>
+    <item name="colorSecondaryVariant">@color/primary.light</item>
+    <item name="colorOnSecondary">@color/primary.dark</item>
+    <!-- Status bar color. -->
+    <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    <!-- Customize your theme here. -->
+    <item name="android:windowBackground">@color/background.dark</item>
+    <item name="android:editTextBackground">@drawable/edit_text</item>
+    <item name="android:editTextColor">@color/text</item>
+    <item name="android:textColor">@color/text</item>
+    <item name="android:textColorHint">@color/text.hint</item>
+    <item name="android:drawableTint">@color/text.hint</item>
+  </style>
+
+  <style name="Theme.BokeDe.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <!-- Primary brand color. -->
+    <item name="colorPrimary">@color/secondary</item>
+    <item name="colorPrimaryVariant">@color/secondary.dark</item>
+    <item name="colorOnPrimary">@color/secondary.light</item>
+    <!-- Secondary brand color. -->
+    <item name="colorSecondary">@color/primary</item>
+    <item name="colorSecondaryVariant">@color/primary.light</item>
+    <item name="colorOnSecondary">@color/primary.dark</item>
+    <!-- Status bar color. -->
+    <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    <!-- Customize your theme here. -->
+    <item name="android:windowBackground">@color/background.dark</item>
+    <item name="android:editTextBackground">@drawable/edit_text</item>
+    <item name="android:editTextColor">@color/text</item>
+    <item name="android:textColor">@color/text</item>
+    <item name="android:textColorHint">@color/text.hint</item>
+    <item name="android:drawableTint">@color/text.hint</item>
+  </style>
+</resources>
