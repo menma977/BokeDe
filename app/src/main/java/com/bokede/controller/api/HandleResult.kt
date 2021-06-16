@@ -45,7 +45,7 @@ class HandleResult(private val response: String) {
         }
       }
     } catch (e: Exception) {
-      return JSONObject().put("message", e.localizedMessage)
+      return JSONObject().put("code", 400).put("message", e.localizedMessage)
     }
   }
 }

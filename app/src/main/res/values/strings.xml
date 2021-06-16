@@ -31,4 +31,5 @@
   <string name="double_text">Double</string>
   <string name="half_text">Half</string>
   <string name="reset_text">Reset</string>
+  <string name="default_amount">Default Amount</string>
 </resources>

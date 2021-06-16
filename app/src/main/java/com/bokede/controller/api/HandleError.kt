@@ -11,7 +11,7 @@ class HandleError(private val error: VolleyError) {
       val jsonMessage: JSONObject = if (raw.isNotEmpty()) {
         JSONObject(raw)
       } else {
-        JSONObject().put("message", "something when wrong")
+        JSONObject().put("code", 555).put("message", "something when wrong/Timout")
       }
 
       return when {
@@ -50,7 +50,7 @@ class HandleError(private val error: VolleyError) {
         }
       }
     } catch (e: Exception) {
-      return JSONObject().put("message", "something when wrong")
+      return JSONObject().put("code", 500).put("message", "something when wrong")
     }
   }
 }

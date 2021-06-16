@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bokede.R
@@ -34,6 +35,7 @@ class BetActivity : AppCompatActivity() {
   private lateinit var chance: EditText
   private lateinit var addChance: ImageButton
   private lateinit var removeAmount: ImageButton
+  private lateinit var amountDefault: EditText
   private lateinit var amount: EditText
   private lateinit var addAmount: ImageButton
   private lateinit var startLoop: Button
@@ -55,6 +57,7 @@ class BetActivity : AppCompatActivity() {
   private var lowModeHigh = BigDecimal(49.999)
   private var lowModeLow = BigDecimal(0)
   private var typeSpinner = "Random"
+  private var isResponse = true
 
   @SuppressLint("SetTextI18n")
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,6 +73,7 @@ class BetActivity : AppCompatActivity() {
     chance = findViewById(R.id.editTextChance)
     addChance = findViewById(R.id.buttonAddChance)
     removeAmount = findViewById(R.id.buttonRemoveAmount)
+    amountDefault = findViewById(R.id.editTextAmountDefault)
     amount = findViewById(R.id.editTextAmount)
     addAmount = findViewById(R.id.buttonAddAmount)
     startLoop = findViewById(R.id.buttonStart)
@@ -83,6 +87,7 @@ class BetActivity : AppCompatActivity() {
 
     adBanner.loadAd(AdRequest.Builder().build())
 
+    amountDefault.setText("1")
     amount.setText("1")
     chance.setText("50")
     val listType = arrayOf("Random", "High", "Low")
@@ -91,6 +96,10 @@ class BetActivity : AppCompatActivity() {
     listView = findViewById<RecyclerView>(R.id.lists_container).apply {
       layoutManager = LinearLayoutManager(applicationContext)
       adapter = listAdapterBet
+    }
+
+    amountDefault.doAfterTextChanged {
+      amount.setText(it.toString())
     }
 
     removeChance.setOnClickListener {
@@ -178,7 +187,7 @@ class BetActivity : AppCompatActivity() {
     }
 
     resetButton.setOnClickListener {
-      amount.setText("1")
+      amount.text = amountDefault.text
     }
 
     oneShot.setOnClickListener {
@@ -247,12 +256,8 @@ class BetActivity : AppCompatActivity() {
 
   private fun botOneShot() {
     val cookie = user.getString("cookie")
-    startLoop.isEnabled = false
     oneShot.isEnabled = false
-    endLoop.isEnabled = true
-
     val payIn = Coin.coinToDecimal(amount.text.toString().toBigDecimal()).toPlainString()
-
     BotController(this).manual(
       cookie,
       payIn,
@@ -273,22 +278,11 @@ class BetActivity : AppCompatActivity() {
           Toast.makeText(applicationContext, response.getString("data"), Toast.LENGTH_SHORT).show()
         }
       }
-      startLoop.isEnabled = true
       oneShot.isEnabled = true
-      endLoop.isEnabled = false
     }, {
       val error = HandleError(it).result()
-      when {
-        error.getInt("code") == 408 -> {
-          Toast.makeText(applicationContext, error.getString("message"), Toast.LENGTH_SHORT).show()
-        }
-        else -> {
-          Toast.makeText(applicationContext, error.getString("message"), Toast.LENGTH_SHORT).show()
-        }
-      }
-      startLoop.isEnabled = true
+      Toast.makeText(applicationContext, error.getString("message"), Toast.LENGTH_SHORT).show()
       oneShot.isEnabled = true
-      endLoop.isEnabled = false
     })
   }
 
@@ -305,7 +299,8 @@ class BetActivity : AppCompatActivity() {
           try {
             setUpMode()
             val payIn = Coin.coinToDecimal(amount.text.toString().toBigDecimal()).toPlainString()
-
+            isResponse = false
+            println(dynamicTime)
             BotController(applicationContext).manual(
               cookie,
               payIn,
@@ -313,6 +308,7 @@ class BetActivity : AppCompatActivity() {
               Coin.percentToChance(currentHigh),
               seed
             ).cll({
+              println(it)
               val response = HandleResult(it).result()
               dynamicTime = when {
                 response.getInt("code") < 400 -> {
@@ -322,29 +318,34 @@ class BetActivity : AppCompatActivity() {
                 }
                 response.getInt("code") == 408 -> {
                   Toast.makeText(applicationContext, response.getString("data"), Toast.LENGTH_SHORT).show()
-                  60000
+                  15000
                 }
                 else -> {
                   Toast.makeText(applicationContext, response.getString("data"), Toast.LENGTH_SHORT).show()
-                  15000
+                  8000
                 }
               }
+              isResponse = true
             }, {
+              println(it)
               val error = HandleError(it).result()
-              when {
-                error.getInt("code") == 408 -> {
-                  Toast.makeText(applicationContext, error.getString("message"), Toast.LENGTH_SHORT).show()
-                }
-                else -> {
-                  Toast.makeText(applicationContext, error.getString("message"), Toast.LENGTH_SHORT).show()
-                }
+              dynamicTime = if (error.getInt("code") == 555) {
+                Toast.makeText(applicationContext, "your connection is problematic wait 15 seconds to continue", Toast.LENGTH_SHORT).show()
+                15000
+              } else {
+                Toast.makeText(applicationContext, error.getString("message"), Toast.LENGTH_SHORT).show()
+                8000
               }
-
-              dynamicTime = 60000
+              isResponse = true
             })
           } catch (e: Exception) {
             Log.e("bot loop", e.message.toString())
-            dynamicTime = 15000
+            dynamicTime = 8000
+            isResponse = true
+          }
+        } else {
+          if (!isResponse) {
+            dynamicTime += 1
           }
         }
       }
