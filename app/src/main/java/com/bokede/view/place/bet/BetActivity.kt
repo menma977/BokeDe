@@ -361,7 +361,7 @@ class BetActivity : AppCompatActivity() {
     if (profit < BigDecimal(0)) {
       winStatement = "out"
     }
-    listAdapterBet.addItem(BotState(winStatement, typeSpinner, "${chance.text}%", Coin.decimalToCoinView(payIn), Coin.decimalToCoinView(profit)), 25)
+    listAdapterBet.addItem(BotState(winStatement, typeSpinner, "${chance.text}%", Coin.decimalToCoinView(payIn), Coin.decimalToCoinView(profit)), 10)
     balance.text = Coin.decimalToCoinView(balanceRaw)
   }
 

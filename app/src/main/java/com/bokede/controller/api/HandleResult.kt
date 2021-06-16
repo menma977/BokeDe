@@ -37,6 +37,9 @@ class HandleResult(private val response: String) {
         json.toString().contains("LoginRequired") -> {
           JSONObject().put("code", 400).put("data", "Login Required")
         }
+        json.toString().contains("LoginInvalid") -> {
+          JSONObject().put("code", 400).put("data", "Login Invalid")
+        }
         else -> {
           JSONObject().put("code", 200).put("data", json)
         }
