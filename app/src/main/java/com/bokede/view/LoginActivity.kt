@@ -45,8 +45,8 @@ class LoginActivity : AppCompatActivity() {
     signUp = findViewById(R.id.buttonSignUp)
     adBanner = findViewById(R.id.adViewBanner)
 
-    username.setText("arbi.biz")
-    password.setText("123456789")
+//    username.setText("arbi.biz")
+//    password.setText("123456789")
 
     adBanner.loadAd(AdRequest.Builder().build())
 

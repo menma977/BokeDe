@@ -22,7 +22,6 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import kotlinx.coroutines.*
 import org.json.JSONObject
-import java.lang.Exception
 import java.math.BigDecimal
 import kotlin.math.pow
 
@@ -87,8 +86,8 @@ class BetActivity : AppCompatActivity() {
 
     adBanner.loadAd(AdRequest.Builder().build())
 
-    amountDefault.setText("1")
-    amount.setText("1")
+    amountDefault.setText("0.000001")
+    amount.setText("0.000001")
     chance.setText("50")
     val listType = arrayOf("Random", "High", "Low")
     type.adapter = ArrayAdapter(this, R.layout.spinner_item, listType)
@@ -288,19 +287,15 @@ class BetActivity : AppCompatActivity() {
 
   private fun botLoop() {
     val cookie = user.getString("cookie")
-
-    var time = System.currentTimeMillis()
-    var dynamicTime = 2000
     CoroutineScope(Dispatchers.IO + job).launch {
+      var dynamicTime = 100L
       while (isActive) {
-        val delta = System.currentTimeMillis() - time
-        if (delta >= dynamicTime) {
-          time = System.currentTimeMillis()
+        if (isResponse) {
+          delay(dynamicTime)
+          isResponse = false
           try {
             setUpMode()
             val payIn = Coin.coinToDecimal(amount.text.toString().toBigDecimal()).toPlainString()
-            isResponse = false
-            println(dynamicTime)
             BotController(applicationContext).manual(
               cookie,
               payIn,
@@ -308,44 +303,39 @@ class BetActivity : AppCompatActivity() {
               Coin.percentToChance(currentHigh),
               seed
             ).cll({
-              println(it)
               val response = HandleResult(it).result()
               dynamicTime = when {
                 response.getInt("code") < 400 -> {
                   response.getJSONObject("data").put("PayIn", payIn)
                   botData(response.getJSONObject("data"))
-                  2000
+                  2000L
                 }
                 response.getInt("code") == 408 -> {
                   Toast.makeText(applicationContext, response.getString("data"), Toast.LENGTH_SHORT).show()
-                  15000
+                  15000L
                 }
                 else -> {
                   Toast.makeText(applicationContext, response.getString("data"), Toast.LENGTH_SHORT).show()
-                  8000
+                  8000L
                 }
               }
               isResponse = true
             }, {
-              println(it)
               val error = HandleError(it).result()
               dynamicTime = if (error.getInt("code") == 555) {
                 Toast.makeText(applicationContext, "your connection is problematic wait 15 seconds to continue", Toast.LENGTH_SHORT).show()
-                15000
+                15000L
               } else {
                 Toast.makeText(applicationContext, error.getString("message"), Toast.LENGTH_SHORT).show()
-                8000
+                8000L
               }
               isResponse = true
             })
           } catch (e: Exception) {
             Log.e("bot loop", e.message.toString())
-            dynamicTime = 8000
+            dynamicTime = 8000L
             isResponse = true
-          }
-        } else {
-          if (!isResponse) {
-            dynamicTime += 1
+            println("error")
           }
         }
       }
