@@ -419,4 +419,11 @@ class BetActivity : AppCompatActivity() {
     }
     return isPowerOfTen(value / BigDecimal(10))
   }
+
+  override fun onBackPressed() {
+    super.onBackPressed()
+    if (::job.isInitialized) {
+      job.cancel(CancellationException("Bot has been close"))
+    }
+  }
 }
