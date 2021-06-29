@@ -16,10 +16,6 @@ class Balance : Service() {
   private lateinit var job: CompletableJob
   private var service: Boolean = false
 
-  override fun onBind(intent: Intent?): IBinder? {
-    TODO("Not yet implemented")
-  }
-
   override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
     return START_STICKY
   }
@@ -88,5 +84,9 @@ class Balance : Service() {
         }
       }
     }
+  }
+
+  override fun onBind(intent: Intent?): IBinder? {
+    TODO("Not yet implemented")
   }
 }
